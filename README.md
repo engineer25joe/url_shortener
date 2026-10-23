@@ -21,7 +21,7 @@ A simple URL shortener built with Django. It supports random short codes, custom
 ## Setup
 
 ```
-git clone <your-repo-url>
+git clone https://github.com/engineer25joe/url_shortener.git
 cd URLShortener
 
 python -m venv venv
@@ -34,7 +34,7 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-Open http://127.0.0.1:8000 in your browser.
+Open http://127.0.0.1:8000 in your browser.(This is only  valid on locaal machine if deploying to a server, you need to change the settings.py file and add your server host to the ALLOWED_HOSTS list  )
 
 ## Usage
 
