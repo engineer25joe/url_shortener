@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stats for {{ link.code }}</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 0 auto; padding: 16px; line-height: 1.4; }
+    table { width: 100%; border-collapse: collapse; }
+    td, th { text-align: left; padding: 8px; border-bottom: 1px solid #ddd; word-break: break-all; }
+    th { width: 35%; }
+    .badge { padding: 2px 8px; border-radius: 10px; font-size: 13px; }
+    .active { background: #dcfce7; }
+    .expired { background: #fee2e2; }
+    a { color: #2563eb; }
+  </style>
+</head>
+<body>
+  <h1>Stats: {{ link.code }}</h1>
+  <table>
+    <tr><th>Short link</th><td><a href="{{ short_url }}">{{ short_url }}</a></td></tr>
+    <tr><th>Destination</th><td>{{ link.url }}</td></tr>
+    <tr><th>Clicks</th><td>{{ link.clicks }}</td></tr>
+    <tr><th>Last click</th><td>{{ link.last_clicked|default:"-" }}</td></tr>
+    <tr><th>Created</th><td>{{ link.created_at }}</td></tr>
+    <tr><th>Expires</th><td>{{ link.expires_at|default:"Never" }}</td></tr>
+    <tr>
+      <th>Status</th>
+      <td>
+        {% if expired %}
+          <span class="badge expired">Expired</span>
+        {% else %}
+          <span class="badge active">Active</span>
+        {% endif %}
+      </td>
+    </tr>
+  </table>
+  <p><a href="{% url 'home' %}">&larr; Back</a></p>
+</body>
+</html>
